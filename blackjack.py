@@ -58,7 +58,7 @@ totalcards(diamonds)
 #print(cards)
 #print('Total cards: ', len(cards))
 
-bet = 1
+bet = 2
 
 
 def startgame():
@@ -242,6 +242,17 @@ def startgame():
         if blackjack(dealer) == True or blackjack(player) == True:
             break
         choice = input().strip().upper()
+
+        if choice == 'Q':
+            if cansplit == False:
+                print('Invalid entry!')
+            #else:
+
+        if choice == 'W':
+            if candoubledown == False:
+                print('Invalid entry!')
+            #else:
+
         if choice == 'F':
 
             draw(player)
@@ -282,6 +293,9 @@ def startgame():
             for i in range(2):
                 print(dealer[i-1])
             break
+
+        else:
+            print("Invalid entry!")
 
     #Dealer's  draw
     while dealerscore < 17:
@@ -359,17 +373,20 @@ while True:
         print('Thank you for playing!')
         break
     if i == 'Z':
-        if bet == 1:
+        if bet == 2:
             print('You cannot lower your bet to 0!')
         else:
-            bet = bet-1
+            bet = bet-2
             print('Current bet:',bet)
     if i == 'X':
         if bet >= coins:
             print('Bet limit reached.')
         else:
-            bet = bet+1
+            bet = bet+2
             print('Current bet:',bet)
+    elif i != 'F' and i != 'C'and i != 'W' and i != 'Q':
+        print('Invalid entry!')
+
     if coins <= 0:
         print('You have gone bankrupt! Game over.')
         break
